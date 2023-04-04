@@ -1,35 +1,18 @@
 import { defineConfig } from 'vite';
+import path from "path";
 import { vitePluginMdToHTML } from 'vite-plugin-md-to-html';
 
+const { resolve } = path;
 
 export default defineConfig({
+	resolve: {
+		alias: [
+			{ find: "@", replacement: resolve(__dirname, "./src") },
+		],
+	},
   plugins: [vitePluginMdToHTML()],
   // esbuild: {
   //   jsxFactory: 'h',
   //   jsxFragment: 'Fragment',
   // },
 })
-
-// import Markdown from 'vite-plugin-md'
-// import code from '@yankeeinlondon/code-builder'
-// import link from '@yankeeinlondon/link-builder'
-
-// export default defineConfig({
-//   plugins: [
-//     Markdown({
-//       headEnabled: true,
-//       frontmatterDefaults: {
-//         requireAuth: false,
-//       },
-//       style: {
-//         baseStyle: 'github',
-//       },
-//       builders: [
-//         link(),
-//         code({
-//           theme: 'base',
-//         }),
-//       ],
-//     }),
-//   ],
-// })

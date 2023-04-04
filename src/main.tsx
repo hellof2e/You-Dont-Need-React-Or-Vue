@@ -1,4 +1,5 @@
 import { router } from "./routes"
+import "./main.css"
 
 router.setRoutes([{
     path: '/',
