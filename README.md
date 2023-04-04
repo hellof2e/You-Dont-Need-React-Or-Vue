@@ -1,4 +1,4 @@
-# Quark App
+# Quark App （Playground demo）
 
 无框架前端应用框架，底层基于 Web components。
 
