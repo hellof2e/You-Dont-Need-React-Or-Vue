@@ -1,4 +1,5 @@
 declare module '*.css';
+declare module '*.css?inline';
 declare module "*.png";
 declare module "*.svg";
 declare module "*.jpeg";
