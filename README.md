@@ -10,6 +10,7 @@
 - [x] 没有虚拟 DOM
 - [x] 支持 TSX / JSX
 - [x] 支持将 Markdown 渲染成 html
+- [x] 浏览器原生，没有依赖
 
 
 ## 如何使用
