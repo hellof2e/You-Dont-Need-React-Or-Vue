@@ -7,7 +7,7 @@ export const router = new Router(outlet);
 
 router.setRoutes([{
     path: '/',
-    component: 'app-home',
+    component: 'app-home', // custom element name
     action: async () => { await import('./views/index/index'); }
   }, {
     path: '/docs',
