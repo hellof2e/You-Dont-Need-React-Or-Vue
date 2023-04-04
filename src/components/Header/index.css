@@ -1,5 +1,3 @@
-
-
 .header {
   height: 72px;
   z-index: 30;
@@ -51,6 +49,10 @@
   font-size: 14px;
 	color: var(--text-font-color-light);
 	font-family: var(--font-family-base);
+  text-decoration: none;
+}
+.nav-item a:hover {
+  color: var(--brand-color);
 }
 .translations,
 .appearance,
@@ -71,13 +73,7 @@
   display: flex;
   align-items: center;
 }
-a {
-    width: 40px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
+
 svg {
     width: 20px;
     height: 20px;
@@ -91,4 +87,9 @@ svg {
   align-items: center;
   justify-content: center;
   color: #3c3c43b3;
+}
+
+.social-links a:hover svg, .translate-lang a:hover svg {
+  color: #3c3c43eb;
+  transition: color .25s;
 }

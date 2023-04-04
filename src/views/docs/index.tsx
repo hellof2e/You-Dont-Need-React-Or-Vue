@@ -1,5 +1,5 @@
 import { QuarkElement, Fragment, property, customElement, state,  createRef, } from "quarkc";
-import style from "./index.css";
+import style from "./index.css?inline";
 
 @customElement({ tag: "app-docs", style })
 class Home extends QuarkElement {

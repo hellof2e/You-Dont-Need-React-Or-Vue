@@ -37,3 +37,8 @@ a {
     color: #4c4c52;
     transition: color .25s;
 }
+
+a:hover {
+	color: var(--brand-color);
+	transition: color .25s;
+}

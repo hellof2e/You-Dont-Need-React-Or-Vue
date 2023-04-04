@@ -8,7 +8,7 @@ export const router = new Router(outlet);
 router.setRoutes([{
     path: '/',
     component: 'app-home',
-    action: async () => { await import('./views/index'); }
+    action: async () => { await import('./views/index/index'); }
   }, {
     path: '/docs',
     component: 'app-docs',
