@@ -16,12 +16,12 @@
 ## 如何使用
 
 ```
-npm install
-npm run dev
+pnpm install
+pnpm run dev
 ```
 
 ## 打包产物
 
 ```
-npm run build
+pnpm run build
 ```
