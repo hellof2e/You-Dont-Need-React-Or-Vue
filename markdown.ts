@@ -8,6 +8,11 @@ import file from 'fs'
 
 import type { Plugin } from 'vite'
 
+import showdown from "showdown";
+
+const converter = new showdown.Converter()
+
+
 
 export interface MarkdownOptions {
   style?: string
@@ -24,6 +29,10 @@ class MdModule {
 }
 
 function highlight(str: string, lang: string, style?: string) {
+  const text = '# hello, markdown!', html = converter.makeHtml(text);
+
+  console.log(text, html, 222);
+
   let link = ''
 
   if (style) {
@@ -42,36 +51,9 @@ function highlight(str: string, lang: string, style?: string) {
   return ''
 }
 
-// function htmlWrapper(html: string) {
-//   const hGroup = html.replace(/<h3/g, ':::<h3').replace(/<h2/g, ':::<h2').split(':::')
-
-//   const cardGroup = hGroup
-//     .map((fragment) => (fragment.includes('<h3') ? `<div class="card">${fragment}</div>` : fragment))
-//     .join('')
-
-//   return cardGroup.replace(/<code>/g, '<code v-pre>')
-// }
-
 const _md = new md({
   html: true,
   highlight: (str, lang) => highlight(str, lang),
-  // highlight: (str, lang) => {
-    // if (lang && hljs.getLanguage(lang)) {
-    //   try {
-    //     return hljs.highlight(lang, str).value;
-    //   } catch (__) {}
-    // }
-    // return ""; // 使用额外的默认转义
-    // if (lang && hljs.getLanguage(lang)) {
-    //   try {
-    //     return '<pre class="hljs"><code>' +
-    //            hljs.highlight(str, { language: lang, ignoreIllegals: true }).value +
-    //            '</code></pre>';
-    //   } catch (__) {}
-    // }
-
-    // return '<pre class="hljs"><code>' + md.utils.escapeHtml(str) + '</code></pre>';
-  // },
 });
 export const transformMarkdown = (mdText: string): string => {
   // 加上一个 class 名为 article-content 的 wrapper，方便我们等下添加样式
@@ -135,11 +117,10 @@ export function markdown(options: MarkdownOptions): Plugin {
         ${transformCode}
       `
 
-      
       // transformCode = transformCode.replace(/{/g, `{'${'\u007b'}'}`)
       // transformCode = transformCode.replace(/}/g, `{'${'\u007d'}'}`)
       // transformCode = transformCode.replace(/}/g, '\u007d')
-      transformCode = transformCode.replace(/[\{\}]/g, (match) => `{'${match}'}`)
+      // transformCode = transformCode.replace(/[\{\}]/g, (match) => `{'${match}'}`)
       
       console.log(transformCode, 8989);
         // 将转换后的代码返回
@@ -151,32 +132,32 @@ export function markdown(options: MarkdownOptions): Plugin {
     },
 
     // 自定义 HMR 更新时调用
-    // handleHotUpdate(ctx) {
-    //   const { file, server, modules } = ctx;
+    handleHotUpdate(ctx) {
+      const { file, server, modules } = ctx;
       
-    //   // 过滤非 md 文件
-    //   if (path.extname(file) !== '.md') return;
+      // 过滤非 md 文件
+      if (path.extname(file) !== '.md') return;
     
-    //   // 找到引入该 md 文件的 tsx 文件
-    //   const relationId = mdRelationMap.get(file) as string;
-    //   // 找到该 tsx 文件的 moduleNode
-    //   const relationModule = [...server.moduleGraph.getModulesByFile(relationId)!][0];
-    //   // 发送 websocket 消息，进行单文件热重载
-    //   server.ws.send({
-    //     type: 'update',
-    //     updates: [
-    //       {
-    //         type: 'js-update',
-    //         path: relationModule.file!,
-    //         acceptedPath: relationModule.file!,
-    //         timestamp: new Date().getTime()
-    //       }
-    //     ]
-    //   });
+      // 找到引入该 md 文件的 tsx 文件
+      const relationId = mdRelationMap.get(file) as string;
+      // 找到该 tsx 文件的 moduleNode
+      const relationModule = [...server.moduleGraph.getModulesByFile(relationId)!][0];
+      // 发送 websocket 消息，进行单文件热重载
+      server.ws.send({
+        type: 'update',
+        updates: [
+          {
+            type: 'js-update',
+            path: relationModule.file!,
+            acceptedPath: relationModule.file!,
+            timestamp: new Date().getTime()
+          }
+        ]
+      });
     
-    //   // 指定需要重新编译的模块
-    //   return [...modules, relationModule]
-    // },
+      // 指定需要重新编译的模块
+      return [...modules, relationModule]
+    },
 
 
   }

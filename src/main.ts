@@ -42,7 +42,7 @@ router.setRoutes([{
     path: '/',
     component: 'app-home', // custom element name
     // action: async () => { await import('./test.jsx'); }
-    action: async () => { await import('./views/index/index'); }
+    action: async () => { await import('./views/index/'); }
     // action: async () => { await import('./views/index/defining.md'); }
   }, {
     path: '/docs',

@@ -42,6 +42,7 @@
     "@pity/vite-plugin-react-markdown": "^0.1.1",
     "@vaadin/router": "^1.7.5",
     "fs-extra": "^11.1.1",
-    "markdown-it": "^13.0.1"
+    "markdown-it": "^13.0.1",
+    "showdown": "^2.1.0"
   }
 }
