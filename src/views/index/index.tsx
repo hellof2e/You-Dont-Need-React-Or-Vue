@@ -1,4 +1,4 @@
-import { QuarkElement, Fragment, property, customElement, state,  createRef } from "quarkc";
+import { QuarkElement, Fragment, customElement } from "quarkc";
 import style from "./index.css?inline";
 
 @customElement({ tag: "app-home", style })
@@ -7,7 +7,6 @@ class Home extends QuarkElement {
     return (
       <Fragment>
         <h1>112222</h1>
-        <g-markdown file="../../docs/ref.md" />
       </Fragment>
     );
   }

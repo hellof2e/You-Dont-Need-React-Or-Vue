@@ -11,7 +11,8 @@
   "scripts": {
     "dev": "npm run start",
     "start": "vite --open --force",
-    "build": "rm -rf lib && rollup -c"
+    "build": "vite build",
+    "npmPkgBuild": "rm -rf lib && rollup -c"
   },
   "devDependencies": {
     "@babel/plugin-transform-runtime": "^7.19.6",
