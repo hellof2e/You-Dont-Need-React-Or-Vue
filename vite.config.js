@@ -6,7 +6,8 @@ import path from "path";
 // import { get } from 'lodash-es'
 
 // import Markdown from "vite-plugin-react-markdown";
-import {markdown} from "./markdown.ts"
+// import {markdown} from "./markdown.ts"
+import { vitePluginMdToHTML } from 'vite-plugin-md-to-html';
 
 const { resolve } = path;
 
@@ -21,8 +22,8 @@ export default defineConfig({
 		],
 	},
   plugins: [
-    markdown(),
-    // Markdown(),
+    // markdown(),
+    vitePluginMdToHTML(),
   ],
   // esbuild: {
   //   jsxFactory: 'h',
