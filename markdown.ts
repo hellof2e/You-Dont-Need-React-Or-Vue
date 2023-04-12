@@ -8,11 +8,6 @@ import file from 'fs'
 
 import type { Plugin } from 'vite'
 
-import showdown from "showdown";
-
-const converter = new showdown.Converter()
-
-
 
 export interface MarkdownOptions {
   style?: string
@@ -29,9 +24,6 @@ class MdModule {
 }
 
 function highlight(str: string, lang: string, style?: string) {
-  const text = '# hello, markdown!', html = converter.makeHtml(text);
-
-  console.log(text, html, 222);
 
   let link = ''
 
