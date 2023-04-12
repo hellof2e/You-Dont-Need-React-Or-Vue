@@ -108,14 +108,12 @@ export function markdown(options: MarkdownOptions): Plugin {
         console.log(mdFilePath, mdText, 123);
         
         // 将 g-markdown 标签替换成转换后的 html 文本
-        transformCode = transformCode.replace(md, transformMarkdown(mdText));
+        // transformCode = transformCode.replace(md, transformMarkdown(mdText));
         // 记录引入当前 md 文件的 tsx 文件 id
         mdRelationMap.set(mdFilePath, id);
       })
 
-      transformCode = `
-        ${transformCode}
-      `
+      transformCode = `${transformCode}`
 
       // transformCode = transformCode.replace(/{/g, `{'${'\u007b'}'}`)
       // transformCode = transformCode.replace(/}/g, `{'${'\u007d'}'}`)
