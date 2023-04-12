@@ -3,7 +3,7 @@
 通过 `ref` 获取 `dom` 节点实例。
 
 
-```js
+```jsx
 import {
   QuarkElement,
   customElement,
@@ -14,5 +14,11 @@ import {
 import style from "./style.css";
 
 
-
+class Home extends QuarkElement {
+  render() {
+    return(
+      <div>markdown</div>
+    )
+  }
+}
 ```

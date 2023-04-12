@@ -3,10 +3,6 @@ import style from "./index.css?inline";
 
 @customElement({ tag: "app-home", style })
 class Home extends QuarkElement {
-  ref: any = createRef();
-  
-  componentDidMount(): void {}
-  
   render() {
     return (
       <Fragment>
