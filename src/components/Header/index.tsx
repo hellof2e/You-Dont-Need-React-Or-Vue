@@ -14,6 +14,9 @@ export default class Header extends QuarkElement {
 	},{
 		name: 'component',
 		link: '/docs'
+	},{
+		name: 'slot',
+		link: '/slot'
 	}]
 
   componentDidMount(): void {}
