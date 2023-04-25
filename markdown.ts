@@ -63,6 +63,8 @@ export function markdown(options: MarkdownOptions): Plugin {
   const markdownRE = /\<g-markdown.*\/\>/g;
   const filePathRE = /(?<=file=("|')).*(?=('|"))/;
 
+  const mdRE = /\.md$/;
+
   return {
     name: 'vite-plugin-varlet-markdown',
 
@@ -73,17 +75,19 @@ export function markdown(options: MarkdownOptions): Plugin {
       
       // console.log(/\<g-markdown.*\/\>/g.test(code), 111);
 
-      if (!tsxRE.test(id) || !markdownRE.test(code)) return code;
+      // if (!tsxRE.test(id) || !markdownRE.test(code)) return code;
+
+      if (!mdRE.test(id)) return;
 
       try {
-        // return transformMarkdown(source)
+      
 
       const mdList = code.match(markdownRE);
 
       // const mdList = code.match(/\.md$/g);
-      console.log(mdList, 333);
+      // console.log(mdList, 333);
       
-      let transformCode = code;
+      let transformCode = transformMarkdown(code);
       mdList?.forEach(md => {
         // 匹配 markdown 文件目录
         const fileRelativePaths = md.match(filePathRE);
@@ -97,7 +101,7 @@ export function markdown(options: MarkdownOptions): Plugin {
         const mdFilePath = path.resolve(fileDir, fileRelativePath);
         // 读取 markdown 文件的内容
         const mdText = file.readFileSync(mdFilePath, 'utf-8');
-        console.log(mdFilePath, mdText, 123);
+        // console.log(mdFilePath, mdText, 123);
         
         // 将 g-markdown 标签替换成转换后的 html 文本
         // transformCode = transformCode.replace(md, transformMarkdown(mdText));
@@ -112,7 +116,7 @@ export function markdown(options: MarkdownOptions): Plugin {
       // transformCode = transformCode.replace(/}/g, '\u007d')
       // transformCode = transformCode.replace(/[\{\}]/g, (match) => `{'${match}'}`)
       
-      console.log(transformCode, 8989);
+      // console.log(transformCode, 8989);
         // 将转换后的代码返回
         return transformCode;
       } catch (e: any) {
