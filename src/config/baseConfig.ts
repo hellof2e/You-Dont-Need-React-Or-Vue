@@ -19,13 +19,13 @@ export default {
     enName: "Getting",
     children: [
       {
-        name: "intro",
-        cName: "自定义元素",
+        name: "简介",
+        enName: "docs",
         show: true,
       },
       {
-        name: "quickstart",
-        cName: "快速上手",
+        name: "快速上手",
+        enName: "quickstart",
         show: true,
       },
     ],
