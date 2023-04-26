@@ -9,8 +9,6 @@ const modulesPage = (import.meta as any).glob(
   "/src/docs/**/**.md"
 )
 
-console.log(modulesPage, 22)
-
 const pageRouter = []
 for(const path in modulesPage) {
   const name = (/docs\/(.*)\/*.md/.exec(path) as any[])[1]
