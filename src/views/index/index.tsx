@@ -1,18 +1,10 @@
 import { QuarkElement, Fragment, customElement, property, state } from "quarkc";
+import { docs } from "@/config/index";
 import style from "./index.css?inline";
-import md from "./defining.md"
-const modulesPage = (import.meta as any).glob(
-  "/src/docs/**/**.md"
-)
-// import showdown from "showdown";
 
-// const converter = new showdown.Converter()
-
-// const text = '# hello, markdown!';
-// const html = converter.makeHtml(text);
-
-// console.log(text, html, 11);
-
+// const modulesPage = (import.meta as any).glob(
+//   "/src/docs/**/**.md"
+// )
 @customElement({ tag: "app-home", style })
 class Home extends QuarkElement {
   @property({
@@ -24,16 +16,46 @@ class Home extends QuarkElement {
   md = '';
 
   componentDidMount() {
-    modulesPage[this.path]().then((data) => {
-      this.md = data.default
-    });
+    // modulesPage[this.path]().then((data) => {
+    //   this.md = data.default
+    // });
+
+    // console.log(modulesPage, modulesPage[this.path](),docs, 11);
+    
   }
 
   render() {
     return (
       <Fragment>
-        <h1>Welcome</h1>
-        <div dangerouslySetInnerHTML={{ __html: this.md }}></div>
+        <aside class="nav-links">
+          <ul className="sidebar-links">
+            {
+              docs.map((item) => {
+                return (
+                  <section class="sidebar-group depth-0">
+                    <p className="sidebar-heading">
+                      <span>{item.name}</span>
+                    </p>
+                    <ul class="sidebar-links sidebar-group-items">
+                      {
+                        item.children.map(subItem => {
+                          return (
+                            <li>
+                              <a href={`/${subItem.enName}`}>
+                                {subItem.name}
+                              </a>
+                            </li>
+                          )
+                        })
+                      }
+                    </ul>
+                  </section>
+                )
+              })
+            }
+          </ul>
+        </aside>
+        {/* <div dangerouslySetInnerHTML={{ __html: this.md }}></div> */}
       </Fragment>
     );
   }

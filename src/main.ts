@@ -18,12 +18,6 @@ for(const path in modulesPage) {
   console.log(name,  modulesPage[path]);
   pageRouter.push({
     path: `/${name}`,
-    // component: `app-${name}`, // custom element name
-    // action: () => {
-    //   const node = document.createElement('app-home');
-    //   node.setAttribute('path', path);
-    //   return node;
-    // },
     action: async () => {  
       const md = await modulesPage[path]();
       const node = document.createElement('div');
@@ -32,25 +26,6 @@ for(const path in modulesPage) {
     }
   })
 }
-
-
-// class UserCard extends HTMLElement {
-//   constructor() {
-//       super();11+
-
-
-      
-//       var el = document.createElement('p');
-//       el.classList.add('name');
-//       el.innerText = 'User Name';
-      
-//       this.append(el);
-//   }
-
-// }
-// window.customElements.define('app-home', UserCard);
-
-import TestHTML from "./defining.md"
 
 router.setRoutes(pageRouter)
 
