@@ -1,13 +1,6 @@
 {
   "name": "quark-app",
   "version": "0.0.1",
-  "type": "module",
-  "files": [
-    "lib/*",
-    "umd/*",
-    "README.md",
-    "package.json"
-  ],
   "scripts": {
     "dev": "npm run start",
     "start": "vite --open --force",
@@ -21,24 +14,16 @@
     "@rollup/plugin-node-resolve": "^15.0.1",
     "@rollup/plugin-typescript": "^9.0.2",
     "@vitejs/plugin-vue": "^4.1.0",
-    "@yankeeinlondon/code-builder": "^1.2.1",
-    "@yankeeinlondon/link-builder": "^1.2.1",
-    "highlight": "^0.2.4",
     "less": "^4.1.3",
-    "postcss-px-to-viewport": "^1.1.1",
-    "quarkc": "^1.0.22",
     "rollup": "^3.2.3",
     "rollup-plugin-filesize": "^9.1.2",
-    "vite": "^4.2.1",
-    "vite-plugin-full-reload": "^1.0.5",
-    "vite-plugin-markdown": "^2.1.0",
-    "vite-plugin-md": "^0.22.5",
-    "vite-plugin-md-to-html": "^0.0.18"
+    "vite": "^4.2.1"
   },
   "engines": {
     "node": ">=12.0.0"
   },
   "dependencies": {
-    "@vaadin/router": "^1.7.5"
+    "@vaadin/router": "^1.7.5",
+    "quarkc": "^1.0.32"
   }
 }
